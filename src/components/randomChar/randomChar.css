@@ -1,0 +1,41 @@
+html {
+	overflow-y: hidden;
+}
+.random-block {
+    background: #fff; 
+    padding: 25px 25px 15px 25px;
+    margin: 0 5px 50px 0;
+    display: inline-block;
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    
+}
+
+.rounded {
+    border-radius: 0.25rem !important;
+    overflow-y: hidden;
+}
+
+.random-block h4 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.term {
+    font-weight: bold;
+}
+
+#houses {
+    height: 350px;
+    width: 550px;
+    margin-left: 15px
+}
+
+#titles {
+    text-align: right;
+    padding-bottom: 0;
+}
+
+span {
+        text-align: right;
+}
