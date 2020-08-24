@@ -62,7 +62,7 @@ export default class RandomHouse extends Component {
 }
 
 const Houses = ({houses}) => {
-    const { name, region, words, titles, seats} = houses;
+    const { name, region, words, titles, ancestralWeapons } = houses;
     return (
         <>
             <h4>Random Houses: <br/> {name}</h4>
@@ -76,8 +76,8 @@ const Houses = ({houses}) => {
                     <span>{words}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Overlord </span>
-                    <span>{seats}</span>
+                    <span className="term">Ancestral Weapons </span>
+                    <span>{ancestralWeapons}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
                     <span className="term">Titles </span>

@@ -6,10 +6,10 @@ import ErrorMessage from '../errorMessage';
 
 
 export default class RandomChar extends Component {
-    constructor() {
-        super();
-        this.updateChar();
-    }
+    // constructor() {
+    //     super();
+    //     console.log('constructor');
+    // }
     
     gotService = new GotService();
 
@@ -17,6 +17,17 @@ export default class RandomChar extends Component {
         char: {},
         loading: true,
         error: false,
+    }
+
+    componentDidMount() {
+        console.log('mounting');
+        this.updateChar();
+        this.timerId = setInterval(this.updateChar, 10000);
+    }
+
+    componentWillUnmount() {
+        console.log('unmounting');
+        clearInterval(this.timerId);
     }
 
     onCharLoaded = (char) => {
@@ -34,6 +45,7 @@ export default class RandomChar extends Component {
     }
 
     updateChar = () => {
+        //console.log('updateChar');
         const id = Math.floor(Math.random()*150 + 45);
         //const id = 50000000000000;
         this.gotService.getCharacter(id)
@@ -42,6 +54,8 @@ export default class RandomChar extends Component {
     }
 
     render() {
+        console.log('render');
+
         const {char,loading, error} = this.state;
     
         const errorMessage = error ? <ErrorMessage/> : null;

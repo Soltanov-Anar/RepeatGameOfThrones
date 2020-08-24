@@ -25,7 +25,7 @@ export default class GotService {
     }
 
     getAllHouses = async () => {
-        const res = await this.getResourse('/houses?page=10&pageSize=10');
+        const res = await this.getResourse('/houses/');
         return res.map(this._transformHouse);
     }
 
@@ -35,45 +35,60 @@ export default class GotService {
     }
 
     getAllBooks = async () => {
-        const books = await this.getResourse('/books?page=10&pageSize=10');
-        return books.map(this._transformBooks);
+        const books = await this.getResourse('/books/');
+        return books.map(this._transformBook);
     }
 
-    getBooks = async (id) => {
+    getBook = async (id) => {
         const book = await this.getResourse(`/books/${id}`);     
-        return this._transformBooks(book);
+        return this._transformBook(book);
+    }
+
+    isSet(data) {
+        if (data) {
+            return data
+        } else {
+            return 'no data :('
+        }
+    }
+
+    _extractId = (item) => {
+        const idRegExp = /\/([0-9]*)$/;
+        return item.url.match(idRegExp)[1];
     }
 
     _transformCharacter = (char) => {
         return {
-            name: char.name,
-            gender: char.gender,
-            born: char.born,
-            died: char.died,
-            culture: char.culture
-        }
+            id: this._extractId(char),
+            name: this.isSet(char.name),
+            gender: this.isSet(char.gender),
+            born: this.isSet(char.born),
+            died: this.isSet(char.died), 
+            culture: this.isSet(char.culture)
+        };
     }
-
-    _transformHouse = (houses) => {
+    _transformHouse = (house) => {
         return {
-            name: houses.name,
-            region: houses.region,
-            words: houses.words,
-            titles: houses.titles,
-            seats: houses.seats,
-        }
+            id: this._extractId(house),
+            name: this.isSet(house.name),
+            region: this.isSet(house.region),
+            words: this.isSet(house.words),
+            titles: this.isSet(house.titles),
+            overlord: this.isSet(house.overlord),  
+            ancestralWeapons: this.isSet(house.ancestralWeapons),  
+        };
     }
-
-    _transformBooks = (book) => {
+    
+    _transformBook = (book) => {
         return {
-            name: book.name,
-            numberOfPages: book.numberOfPages,
-            publisher: book.publisher,
-            released: book.released
-        }
+            id: this._extractId(book),
+            name: this.isSet(book.name),
+            numberOfPages: this.isSet(book.numberOfPages),
+            publisher: this.isSet(book.publisher),
+            released: this.isSet(book.released)
+        };
     }
 }
-
 /* const got = new GotService();
 
 got.getAllCharacters()

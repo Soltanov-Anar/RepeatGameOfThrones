@@ -1,3 +1,10 @@
+@font-face {
+	font-family:game-of-thrones-kg25;
+	src: url(game-of-thrones-kg25.ttf);
+	font-weight: bold;
+}
+
+
 .toggle-btn {
     padding: 12px;
     background-color: #1e2edb;
@@ -30,8 +37,8 @@ html {
     display: block;
     position: absolute;
     top: 355px;
-    right: 55px;
-    width:550px;
+    right: 20px;
+    width:585px;
 }
 
 .container {
@@ -40,6 +47,7 @@ html {
 
 .both {
     clear: both;
+    margin: 10px;
 }
 
 .col-md-6 {
@@ -66,4 +74,20 @@ html {
     width: 550px;
     margin-left: 15px;
     border-radius: 10px;
+}
+
+.app {
+    background: blue url('got.jpeg') center center no-repeat;
+    background-size: cover;
+    height: 1000px;	
+}
+
+#welcome {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    font-family: game-of-thrones-kg25;
+    line-height: 20px;
+    display: block;
+    margin-top: 60px;
 }
