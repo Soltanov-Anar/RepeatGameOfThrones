@@ -83,7 +83,7 @@ RandomHouse.propTypes = {
 }
 
 const Houses = ({houses}) => {
-    const { name, region, words, diedOut, founded } = houses;
+    const { name, region, words, ancestralWeapons, titles } = houses;
     return (
         <>
             <h4>Random Houses: <br/> {name}</h4>
@@ -97,12 +97,12 @@ const Houses = ({houses}) => {
                     <span>{words}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Founded </span>
-                    <span>{founded}</span>
+                    <span className="term">Ancestral Weapons</span>
+                    <span>{ancestralWeapons}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Died Out</span>
-                    <span id="titles">{diedOut}</span>
+                    <span className="term">Titles</span>
+                    <span id="titles">{titles}</span>
                 </li>
             </ul>
         </>

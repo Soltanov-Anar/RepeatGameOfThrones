@@ -25,7 +25,7 @@ export default class GotService {
     }
 
     getAllHouses = async () => {
-        const res = await this.getResourse('/houses?page=10&pageSize=10/');
+        const res = await this.getResourse('/houses?page=11&pageSize=10/');
         return res.map(this._transformHouse);
     }
 
@@ -73,9 +73,9 @@ export default class GotService {
             name: this.isSet(house.name),
             region: this.isSet(house.region),
             words: this.isSet(house.words),
-            titles: this.isSet(house.titles),
+            titles: this.isSet(house.titles[0]),
             overlord: this.isSet(house.overlord),  
-            ancestralWeapons: this.isSet(house.ancestralWeapons),  
+            ancestralWeapons: this.isSet(house.ancestralWeapons[0]),  
             founded: this.isSet(house.founded), 
             diedOut: this.isSet(house.diedOut),
         };
