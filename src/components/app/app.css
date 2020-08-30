@@ -4,6 +4,31 @@
 	font-weight: bold;
 }
 
+html {
+	overflow-y: scroll;
+}
+
+.app {
+    background: blue url('got.jpeg') center center no-repeat;
+    background-size: cover;
+    height: 1000px;	
+}
+
+.container {
+    position: relative;
+}
+
+.both {
+    clear: both;
+    margin: 10px;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 20px;
+    width: 540px;
+}
 
 .toggle-btn {
     padding: 12px;
@@ -21,10 +46,6 @@
     outline: none;
 }
 
-html {
-	overflow-y: scroll;
-}
-
 #button-first {
     display: block;
     position: absolute;
@@ -39,22 +60,6 @@ html {
     top: 355px;
     right: 20px;
     width:585px;
-}
-
-.container {
-    position: relative;
-}
-
-.both {
-    clear: both;
-    margin: 10px;
-}
-
-.col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin-top: 20px;
-    width: 540px;
 }
 
 .toggleChar {
@@ -74,12 +79,6 @@ html {
     width: 550px;
     margin-left: 15px;
     border-radius: 10px;
-}
-
-.app {
-    background: blue url('got.jpeg') center center no-repeat;
-    background-size: cover;
-    height: 1000px;	
 }
 
 #welcome {

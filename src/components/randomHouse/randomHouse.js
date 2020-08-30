@@ -3,13 +3,14 @@ import './randomHouse.css';
 import GotService from '../../services/gotService';
 import Spinner from '../spinner';
 import ErrorMessage from '../errorMessage';
+import PropTypes from 'prop-types';
 
 
 export default class RandomHouse extends Component {
-    constructor() {
-        super();
-        this.updateHouse();
-    }
+    // constructor() {
+    //     super();
+    //     this.updateHouse();
+    // }
     
     gotService = new GotService();
 
@@ -17,6 +18,22 @@ export default class RandomHouse extends Component {
         houses: {},
         loading: true,
         errorForHouse: false,
+    }
+
+    static defaultProps = {
+        interval: 10000,
+    }
+
+    componentDidMount = () => {
+        const {interval} = this.props;
+        console.log('mounting');
+        this.updateHouse();
+        this.timerId = setInterval(this.updateHouse, interval);
+    }
+
+    componentWillMount = () => {
+        console.log('unmounting');
+        clearInterval(this.timerId);
     }
 
     onHouseLoaded = (houses) => {
@@ -61,8 +78,12 @@ export default class RandomHouse extends Component {
     }
 }
 
+RandomHouse.propTypes = {
+    interval: PropTypes.number
+}
+
 const Houses = ({houses}) => {
-    const { name, region, words, titles, ancestralWeapons } = houses;
+    const { name, region, words, diedOut, founded } = houses;
     return (
         <>
             <h4>Random Houses: <br/> {name}</h4>
@@ -76,12 +97,12 @@ const Houses = ({houses}) => {
                     <span>{words}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Ancestral Weapons </span>
-                    <span>{ancestralWeapons}</span>
+                    <span className="term">Founded </span>
+                    <span>{founded}</span>
                 </li>
                 <li className="list-group-item d-flex justify-content-between">
-                    <span className="term">Titles </span>
-                    <span id="titles">{titles}</span>
+                    <span className="term">Died Out</span>
+                    <span id="titles">{diedOut}</span>
                 </li>
             </ul>
         </>

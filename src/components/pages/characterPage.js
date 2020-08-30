@@ -4,13 +4,24 @@ import ItemDetails, {Field} from '../itemDetails';
 import ErrorMessage from '../errorMessage';
 import GotService from '../../services/gotService';
 import RowBlock from '../rowBlock';
+import PropTypes from 'prop-types';
 
+import './characterPage.css';
 export default class CharacterPage extends Component {
     gotService = new GotService();
 
     state = {
         selectedChar: null,
         error: false
+    }
+
+    static defaultProps = {
+        onItemSelected: () => {}
+    }
+    
+    static propTypes = {
+        onItemSelected: PropTypes.func,
+        //getData: PropTypes.arrayOf(PropTypes.object)
     }
 
     onItemSelected = (id) => {
@@ -54,3 +65,12 @@ export default class CharacterPage extends Component {
         )
     }
 }
+
+// CharacterPage.defaultProps = {
+//     onItemSelected: () => {}
+// }
+
+// CharacterPage.propTypes = {
+//     onItemSelected: PropTypes.func,
+//     //getData: PropTypes.arrayOf(PropTypes.object)
+// }

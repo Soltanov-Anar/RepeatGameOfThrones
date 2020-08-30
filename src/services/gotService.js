@@ -15,7 +15,7 @@ export default class GotService {
     };
 
     getAllCharacters = async () => {
-        const res = await this.getResourse('/characters?page=10&pageSize=10');
+        const res = await this.getResourse('/characters?page=10&pageSize=10/');
         return res.map(this._transformCharacter)
     }
 
@@ -25,7 +25,7 @@ export default class GotService {
     }
 
     getAllHouses = async () => {
-        const res = await this.getResourse('/houses/');
+        const res = await this.getResourse('/houses?page=10&pageSize=10/');
         return res.map(this._transformHouse);
     }
 
@@ -46,9 +46,9 @@ export default class GotService {
 
     isSet(data) {
         if (data) {
-            return data
+            return data;
         } else {
-            return 'no data :('
+            return 'no data :(';
         }
     }
 
@@ -76,6 +76,8 @@ export default class GotService {
             titles: this.isSet(house.titles),
             overlord: this.isSet(house.overlord),  
             ancestralWeapons: this.isSet(house.ancestralWeapons),  
+            founded: this.isSet(house.founded), 
+            diedOut: this.isSet(house.diedOut),
         };
     }
     
